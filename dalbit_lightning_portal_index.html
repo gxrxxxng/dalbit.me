@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dalbit Lightning Portal</title>
+  <meta name="description" content="Dalbit — Run your own light under the moon. Self‑sovereign Lightning identity."/>
+  <style>
+    :root{
+      --bg1:#0e0b16; /* 달빛 밤 하늘 */
+      --bg2:#2a1f4a; /* 퍼플 그라데이션 */
+      --fg:#e9e7ef;  /* 본문 텍스트 */
+      --gold:#f4d06f;/* 포인트 컬러 */
+      --muted:#aca6bf;/* 서브 텍스트 */
+      --card:#1a1630; /* 카드 배경 */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Noto Sans KR, Apple SD Gothic Neo, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--fg);
+      background: radial-gradient(1200px 800px at 20% 10%, #241c3e 0%, transparent 60%), linear-gradient(160deg,var(--bg1),var(--bg2));
+      background-attachment: fixed;
+    }
+    .container{max-width:1000px; margin:0 auto; padding:32px 20px 60px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:8px 0 24px}
+    .logo{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px}
+    .logo .moon{width:28px; height:28px; border-radius:50%; background:radial-gradient(circle at 30% 30%, #fff 0%, #ffe8a6 35%, #e7c96b 60%, #a88b37 100%); box-shadow:0 0 24px rgba(244,208,111,.45)}
+    .logo .brand{font-size:18px}
+    .nav a{color:var(--muted); text-decoration:none; margin-left:16px; font-size:14px}
+    .nav a:hover{color:var(--fg)}
+
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:center; padding:20px 0 12px}
+    @media (max-width: 860px){.hero{grid-template-columns:1fr;}}
+
+    .title{font-size:38px; line-height:1.15; font-weight:800; margin:0 0 10px}
+    .title .zap{color:var(--gold)}
+    .tagline{color:var(--muted); font-size:18px; margin:0 0 20px}
+
+    .card{background:rgba(26,22,48,.72); border:1px solid rgba(244,208,111,.12); border-radius:18px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.25)}
+
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{appearance:none; border:1px solid rgba(244,208,111,.35); background:transparent; color:var(--gold); padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600}
+    .btn:hover{background:rgba(244,208,111,.09)}
+
+    .qrbox{display:flex; flex-direction:column; align-items:center; gap:10px}
+    .qr{width:220px; height:220px; border-radius:12px; background:#fff; display:block; box-shadow:0 8px 30px rgba(0,0,0,.25)}
+    .small{color:var(--muted); font-size:13px}
+
+    .node{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; margin-top:14px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:14px; color:#f7f6fb; word-break:break-all}
+
+    .about{margin-top:28px; color:var(--fg); line-height:1.7}
+    .links{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+
+    footer{margin-top:48px; padding-top:16px; border-top:1px dashed rgba(244,208,111,.25); color:var(--muted); font-size:13px}
+
+    /* Subcards */
+    .subgrid{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:22px}
+    @media (max-width: 860px){.subgrid{grid-template-columns:1fr}}
+    .subcard .label{color:var(--muted); font-size:13px; margin-bottom:6px}
+    .subcard .value{font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="moon" aria-hidden="true"></div>
+        <div class="brand">Dalbit</div>
+      </div>
+      <nav class="nav">
+        <!-- 필요하면 외부 링크를 채우세요 -->
+        <a href="#about">About</a>
+        <a href="#links">Links</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1 class="title"><span class="zap">⚡</span> Dalbit Lightning Portal</h1>
+        <p class="tagline">Run your own light under the moon.</p>
+
+        <div class="card">
+          <div class="subgrid">
+            <div class="subcard">
+              <div class="label">Lightning Address / LNURL</div>
+              <div class="value small">페이지의 QR을 스캔하거나 아래 버튼을 눌러 결제 테스트</div>
+            </div>
+            <div class="subcard">
+              <div class="label">Node ID (CLN/LND)</div>
+              <div class="value mono" id="node-id">REPLACE_ME_NODE_ID_02abcdef...1234</div>
+            </div>
+            <div class="subcard">
+              <div class="label">Status</div>
+              <div class="value">Online ✅</div>
+            </div>
+          </div>
+
+          <div class="node">
+            <div class="actions">
+              <a class="btn" id="pay-link" href="REPLACE_ME_LNURL_OR_BOLT12" target="_blank" rel="noopener">Send sats ⚡</a>
+              <button class="btn" id="copy-node">Copy Node ID</button>
+            </div>
+            <span class="small">※ 버튼 링크와 노드 아이디는 나중에 실제 값으로 바꾸세요.</span>
+          </div>
+        </div>
+
+        <div class="about" id="about">
+          <p>비트코인은 기술이자 태도입니다. 라이트닝 네트워크는 달빛처럼 조용히 흐르는 빛. 나는 내 손으로 운영하는 노드 위에서, 작은 사토시가 오가는 순간의 기쁨을 사랑합니다.</p>
+        </div>
+      </div>
+
+      <aside class="card qrbox">
+        <!--
+          ▼ 여기에 QR 이미지(예: LNbits가 만든 LNURLp QR)를 넣으세요.
+          예시: <img class="qr" src="https://example.com/qr.png" alt="LNURL QR" />
+        -->
+        <img class="qr" src="REPLACE_ME_QR_IMAGE_URL" alt="Lightning QR" />
+        <div class="small">스캔해서 소액 결제를 테스트해보세요.</div>
+      </aside>
+    </section>
+
+    <section id="links" class="card" style="margin-top:28px">
+      <div class="links">
+        <a class="btn" href="https://explorer.dalbit.me" target="_blank" rel="noopener">Node Explorer</a>
+        <a class="btn" href="https://blog.dalbit.me" target="_blank" rel="noopener">Journal / Blog</a>
+        <a class="btn" href="https://wallet.dalbit.me" target="_blank" rel="noopener">LNbits</a>
+        <a class="btn" href="https://github.com/REPLACE_ME" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://nostr.band/?q=npub_REPLACE_ME" target="_blank" rel="noopener">Nostr</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Dalbit.me • Self‑sovereign Lightning Identity
+    </footer>
+  </div>
+
+  <script>
+    // Node ID 복사 버튼
+    const btn = document.getElementById('copy-node');
+    const node = document.getElementById('node-id');
+    btn.addEventListener('click', async () => {
+      try{
+        await navigator.clipboard.writeText(node.textContent.trim());
+        btn.textContent = 'Copied!';
+        setTimeout(()=>btn.textContent='Copy Node ID', 1400);
+      }catch(e){
+        alert('복사에 실패했습니다. 수동으로 복사해주세요.');
+      }
+    });
+  </script>
+</body>
+</html>
