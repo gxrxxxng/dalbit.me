@@ -43,6 +43,7 @@
     .wrap{max-width:var(--max); margin:0 auto; padding:18px 18px}
     .row{display:flex; align-items:center; justify-content:space-between; gap:14px}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+    .brand:hover{opacity:.9}
     .moon{
       width:18px; height:18px; border-radius:50%;
       background: radial-gradient(circle at 30% 30%, #fff6cf 0%, #ffe89a 45%, #ffda6b 60%, #d9b454 100%);
@@ -55,20 +56,17 @@
     .hero h1{margin:8px 0 6px; font-size:42px; letter-spacing:.2px}
     .hero p{margin:0; color:var(--muted)}
 
-    .toolbar{
-      display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 8px;
-    }
+    .toolbar{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 8px;}
     .btn{
-      appearance:none; border:1px solid var(--ring); color:var(--text); background:linear-gradient(180deg,#221a3f,#1a1530);
+      appearance:none; border:1px solid var(--ring); color:var(--text);
+      background:linear-gradient(180deg,#221a3f,#1a1530);
       padding:9px 14px; border-radius:12px; cursor:pointer; box-shadow:var(--shadow);
     }
     .btn:hover{border-color:#6b61a8}
     .btn-accent{background:linear-gradient(180deg,#ffd66a,#ffb94f); color:#1a1306; border:none}
     .btn-accent:hover{filter:saturate(110%)}
 
-    .grid{
-      display:grid; grid-template-columns:repeat(3,1fr); gap:var(--grid-gap);
-    }
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--grid-gap);}
     @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:620px){ .grid{grid-template-columns:1fr} .hero h1{font-size:32px} }
 
@@ -76,11 +74,10 @@
       background:linear-gradient(180deg, var(--card), #120f22);
       border:1px solid var(--ring); border-radius:var(--radius); overflow:hidden;
       box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      position:relative;
     }
     .card:hover{transform:translateY(-3px); border-color:#5e56a2}
-    .thumb{
-      display:block; width:100%; aspect-ratio:1/1; object-fit:cover; background:#0b0914;
-    }
+    .thumb{display:block; width:100%; aspect-ratio:1/1; object-fit:cover; background:#0b0914;}
     .meta{padding:14px}
     .title{margin:0 0 6px; font-weight:700}
     .desc{margin:0 0 10px; color:var(--muted); font-size:14px}
@@ -88,21 +85,23 @@
     .tiny{font-size:12px; color:var(--muted)}
     .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:6px; vertical-align:1px}
 
-    .footer{
-      margin:40px 0 80px; color:var(--muted); font-size:14px; text-align:center;
-    }
+    .footer{margin:40px 0 80px; color:var(--muted); font-size:14px; text-align:center;}
     .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0e0b1a; border:1px solid var(--ring); border-radius:6px; padding:2px 6px}
     a.inline{color:#aee0ff}
+    .badge{position:absolute; right:10px; bottom:10px; background:rgba(0,0,0,.55); color:#fff; font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.2);}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap row">
-      <div class="brand"><span class="moon" aria-hidden="true"></span> Dalbit</div>
+      <a href="/" class="brand" style="text-decoration:none; color:inherit;">
+        <span class="moon"></span> Dalbit
+      </a>
       <nav>
         <a href="#gallery">Gallery</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
+        <a href="https://x.com/gxrxxxng?s=21" target="_blank" rel="noopener">X</a>
       </nav>
     </div>
   </header>
@@ -119,97 +118,93 @@
       </div>
     </section>
 
-    <section id="gallery" aria-label="artwork gallery" class="grid">
-<!-- 카드 1: SeedSigner Corn Screen -->
-<article class="card">
-  <a href="https://x.com/gxrxxxng/status/1981310401754386533?s=46"
-     target="_blank" rel="noopener"
-     aria-label="SeedSigner Corn Screen — X에서 보기"
-     style="position:relative; display:block;">
-    <img class="thumb"
-         src="https://pbs.twimg.com/tweet_video_thumb/GhTHj3qa4AA9tDJ.jpg"
-         alt="SeedSigner corn screen, pixel style (X에서 보기)" />
-    <!-- 오른쪽 아래 배지 -->
-    <span style="position:absolute; right:10px; bottom:10px;
-                 background:rgba(0,0,0,.55); color:#fff;
-                 font-size:12px; padding:4px 8px; border-radius:999px;
-                 border:1px solid rgba(255,255,255,.2);">
-      ▶ Watch on X
-    </span>
-  </a>
-
-  <div class="meta">
-    <h3 class="title">SeedSigner — 🌽 Corn Screen</h3>
-    <p class="desc">시드사이너 화면에 옥수수 아이콘이 깜빡이는 버전. ‘CORN GANG’에서 착안.</p>
-    <div class="row">
-      <span class="tiny"><span class="dot"></span>2025-10-24</span>
-      <a class="tiny inline"
-         href="https://github.com/gxrxxxng/dalbit.me/commit/e1eba7f"
-         target="_blank" rel="noopener">Proof</a>
-    </div>
-  </div>
-</article>
-
-
-
-
+    <section id="gallery" class="grid">
+      <!-- 카드 1 -->
       <article class="card">
-        <img class="thumb" loading="lazy" src="https://raw.githubusercontent.com/placeholder/placeholder/main/600x600.png" alt="Bitaxe pixel art" />
+        <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank" rel="noopener">
+          <img class="thumb" data-tweet="https://x.com/gxrxxxng/status/1981310401754386533" alt="SeedSigner corn screen (X에서 보기)" />
+          <span class="badge">▶ Watch on X</span>
+        </a>
         <div class="meta">
-          <h3 class="title">Bitaxe Gamma 601</h3>
-          <p class="desc">홈마이닝의 상징, Bitaxe를 보랏빛 그라데이션 위에.</p>
+          <h3 class="title">SeedSigner — 🌽 Corn Screen</h3>
+          <p class="desc">시드사이너 화면에 옥수수 아이콘이 깜빡이는 버전. ‘CORN GANG’ 가입 기념.</p>
           <div class="row">
-            <span class="tiny"><span class="dot"></span>2025-10-22</span>
-            <a class="tiny inline" href="https://github.com/gxrxxxng/dalbit.me/commits/main" target="_blank" rel="noopener">Proof</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <img class="thumb" loading="lazy" src="https://raw.githubusercontent.com/placeholder/placeholder/main/600x600.png" alt="Lightning node portal, pixel icons" />
-        <div class="meta">
-          <h3 class="title">Lightning Portal</h3>
-          <p class="desc">달빛 아래 흐르는 라이트닝—작은 결제의 반짝임.</p>
-          <div class="row">
-            <span class="tiny"><span class="dot"></span>2025-10-20</span>
-            <a class="tiny inline" href="https://github.com/gxrxxxng/dalbit.me/commits/main" target="_blank" rel="noopener">Proof</a>
+            <span class="tiny"><span class="dot"></span>2025-10-24</span>
+            <a class="tiny inline" href="https://github.com/gxrxxxng/dalbit.me/commit/e1eba7f" target="_blank" rel="noopener">Proof</a>
           </div>
         </div>
       </article>
     </section>
 
     <section id="about" class="hero" style="padding-top:40px">
-      <h2 style="margin:0 0 6px">About</h2>
-      <p style="color:var(--muted); margin-top:6px">
+      <h2>About</h2>
+      <p style="color:var(--muted)">
         이곳의 모든 픽셀아트는 블록처럼 쌓인 기록 속에 남습니다.
         각 작품의 커밋 히스토리는 <span class="kbd">Proof</span> 링크로 확인할 수 있으며, 그림을 올린 순간을 증명합니다.
       </p>
     </section>
 
     <section id="contact" class="hero" style="padding-top:20px">
-      <h2 style="margin:0 0 6px">Contact</h2>
+      <h2>Contact</h2>
       <p class="tiny">
-        제안/의뢰: <a class="inline" href="mailto:gr@dalbit.me">gr@dalbit.me</a>
-        · Lightning: <span id="lnaddr" class="kbd">garyeong@strike.me</span>
+        제안/의뢰: <a class="inline" href="mailto:gr@dalbit.me">gr@dalbit.me</a> ·
+        Lightning: <span id="lnaddr" class="kbd">garyeong@strike.me</span> ·
+        X: <a class="inline" href="https://x.com/gxrxxxng?s=21" target="_blank" rel="noopener">@gxrxxxng</a>
       </p>
     </section>
 
     <p class="footer">© <span id="y"></span> Dalbit • Run your art under the moon.</p>
   </main>
 
+  <!-- ⚡ 자동 트윗 썸네일 로더 -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
     (function(){
-      const addr = document.getElementById('lnaddr').textContent.trim();
+      const addr = document.getElementById('lnaddr')?.textContent.trim();
       const $btn = document.getElementById('copyLn');
-      $btn.addEventListener('click', async () => {
-        try{
-          await navigator.clipboard.writeText(addr);
-          const old = $btn.textContent;
-          $btn.textContent = 'Copied!';
-          setTimeout(()=>{$btn.textContent = old;}, 1500);
-        }catch(e){ alert('복사 실패. 수동으로 복사해주세요: ' + addr); }
-      });
+      if($btn && addr){
+        $btn.addEventListener('click', async () => {
+          try{
+            await navigator.clipboard.writeText(addr);
+            const old = $btn.textContent;
+            $btn.textContent = 'Copied!';
+            setTimeout(()=>{$btn.textContent = old;}, 1500);
+          }catch(e){ alert('복사 실패. 수동으로 복사해주세요: ' + addr); }
+        });
+      }
+    })();
+
+    async function getTweetThumb(tweetUrl){
+      const tweetId = tweetUrl.split('/status/')[1]?.split('?')[0];
+      if(!tweetId) return null;
+      const apiUrl = `https://cdn.syndication.twimg.com/tweet-result?id=${tweetId}`;
+      try{
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        return data?.image_url || null;
+      }catch(e){
+        console.warn('트윗 썸네일 로드 실패:', e);
+        return null;
+      }
+    }
+
+    (async function(){
+      const imgs = document.querySelectorAll('img[data-tweet]');
+      for(const img of imgs){
+        const tweetUrl = img.dataset.tweet;
+        const thumb = await getTweetThumb(tweetUrl);
+        if(thumb){ img.src = thumb; }
+        else{
+          img.style.background = "#0b0914";
+          img.style.color = "#777";
+          img.style.fontSize = "12px";
+          img.style.display = "flex";
+          img.style.alignItems = "center";
+          img.style.justifyContent = "center";
+          img.textContent = "No preview";
+        }
+      }
     })();
   </script>
 </body>
