@@ -4,18 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dalbit Pixel Gallery — Bitcoin-Inspired Pixel Art</title>
-  <meta name="description" content="비트코인과 라이트닝에서 영감받은 픽셀아트 컬렉션. 달빛 아래에서 빛나는 작은 사토시들." />
+  <meta name="description" content="비트코인과 라이트닝에서 영감받은 픽셀아트 컬렉션." />
   <meta property="og:title" content="Dalbit Pixel Gallery" />
   <meta property="og:description" content="비트코인 × 픽셀아트 컬렉션" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dalbit.me/" />
 
+  <!-- 폰트 로드 안정성 강화 -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
   <style>
-    /* Pixel-vibe Korean font */
+    /* Pixel-vibe Korean font (DungGeunMo) */
     @font-face {
       font-family: 'DungGeunMo';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/DungGeunMo.woff') format('woff');
-      font-weight: normal; font-style: normal;
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/DungGeunMo.woff?v=4') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
 
     :root{
@@ -26,15 +32,18 @@
     *{box-sizing:border-box}
     html,body{height:100%}
 
+    html { font-size:16px; line-height:1.6; }
     body{
       margin:0; color:var(--text);
-      font:500 16px/1.6 'DungGeunMo', ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Helvetica,Arial;
+      font-family:'DungGeunMo', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", Helvetica, Arial;
       letter-spacing:.1px;
       background:
         radial-gradient(1200px 700px at 10% -20%, #352a66 0%, rgba(53,42,102,0) 60%),
         radial-gradient(1000px 600px at 120% 10%, #2b1f52 0%, rgba(43,31,82,0) 60%),
         linear-gradient(180deg, var(--bg-1), var(--bg-0));
     }
+    *, *::before, *::after { font-family: inherit; }
+    button, input, select, textarea { font: inherit; }
 
     header{
       position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
@@ -83,6 +92,7 @@
     .badge{position:absolute; right:10px; bottom:10px; background:rgba(0,0,0,.55); color:#fff; font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.2);}
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap row">
@@ -101,7 +111,7 @@
   <main class="wrap">
     <section class="hero">
       <h1>Dalbit Pixel Gallery</h1>
-      <p>비트코인 × 라이트닝에서 영감받은 픽셀아트 모음. 달빛 아래에서 빛나는 작은 사토시들을 기록합니다.</p>
+      <p>비트코인 × 라이트닝에서 영감받은 픽셀아트 모음. 빛나는 작은 사토시들을 기록합니다.</p>
 
       <div class="toolbar">
         <a class="btn btn-accent" href="lightning:garyeong@strike.me" id="tip">⚡ Lightning Tip</a>
@@ -111,18 +121,17 @@
     </section>
 
     <section id="gallery" class="grid">
-      <!-- 카드 1 -->
       <article class="card">
         <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank" rel="noopener"
            aria-label="SeedSigner Corn Screen — X에서 보기" style="position:relative; display:block;">
           <img class="thumb"
-               src="assets/images/corn-thumb.png?v=1"
+               src="assets/images/corn-thumb.png?v=4"
                alt="SeedSigner corn screen, pixel style (워터마크 썸네일)" />
           <span class="badge">▶ Watch on X</span>
         </a>
         <div class="meta">
           <h3 class="title">SeedSigner — 🌽 Corn Screen</h3>
-          <p class="desc">시드사이너 화면에 옥수수 아이콘이 깜빡이는 버전. ‘CORN GANG’ 가입 기념.</p>
+          <p class="desc">화면에 옥수수 아이콘이 깜빡이는 시드사이너. ‘CORN GANG’ 가입 기념.</p>
           <div class="row">
             <span class="tiny"><span class="dot"></span>2025-10-23</span>
           </div>
@@ -132,9 +141,7 @@
 
     <section id="about" class="hero" style="padding-top:40px">
       <h2>About</h2>
-      <p style="color:var(--muted)">
-        이곳의 모든 픽셀아트는 블록처럼 쌓인 기록 속에 남습니다.
-      </p>
+      <p style="color:var(--muted)">이곳의 모든 픽셀아트는 블록처럼 쌓인 기록 속에 남습니다.</p>
     </section>
 
     <section id="contact" class="hero" style="padding-top:20px">
@@ -149,7 +156,6 @@
   </main>
 
   <script>
-    // 연도 / 라이트닝 복사
     document.getElementById('y').textContent = new Date().getFullYear();
     (function(){
       const addr = document.getElementById('lnaddr')?.textContent.trim();
