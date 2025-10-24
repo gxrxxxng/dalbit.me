@@ -1,154 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dalbit Lightning Portal</title>
-  <meta name="description" content="Dalbit — Run your own light under the moon. Self‑sovereign Lightning identity."/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dalbit Pixel Gallery — Bitcoin-Inspired Pixel Art</title>
+  <meta name="description" content="비트코인과 라이트닝에서 영감받은 픽셀아트 컬렉션. 달빛 아래에서 빛나는 작은 사토시들." />
+  <meta property="og:title" content="Dalbit Pixel Gallery" />
+  <meta property="og:description" content="비트코인 × 픽셀아트 컬렉션" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dalbit.me/" />
+
   <style>
     :root{
-      --bg1:#0e0b16; /* 달빛 밤 하늘 */
-      --bg2:#2a1f4a; /* 퍼플 그라데이션 */
-      --fg:#e9e7ef;  /* 본문 텍스트 */
-      --gold:#f4d06f;/* 포인트 컬러 */
-      --muted:#aca6bf;/* 서브 텍스트 */
-      --card:#1a1630; /* 카드 배경 */
+      --bg-0:#0f0c1a;
+      --bg-1:#1a1530;
+      --bg-2:#211a3d;
+      --text:#e9e6ff;
+      --muted:#bfb9e6;
+      --accent:#ffcc57;
+      --accent-2:#7dd3fc;
+      --card:#17132a;
+      --ring:rgba(255,255,255,.12);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --grid-gap:16px;
+      --max:1100px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Noto Sans KR, Apple SD Gothic Neo, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--fg);
-      background: radial-gradient(1200px 800px at 20% 10%, #241c3e 0%, transparent 60%), linear-gradient(160deg,var(--bg1),var(--bg2));
-      background-attachment: fixed;
+      margin:0; color:var(--text); font:500 16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Helvetica,Arial;
+      background:
+        radial-gradient(1200px 700px at 10% -20%, #352a66 0%, rgba(53,42,102,0) 60%),
+        radial-gradient(1000px 600px at 120% 10%, #2b1f52 0%, rgba(43,31,82,0) 60%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-0));
     }
-    .container{max-width:1000px; margin:0 auto; padding:32px 20px 60px}
-    header{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:8px 0 24px}
-    .logo{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px}
-    .logo .moon{width:28px; height:28px; border-radius:50%; background:radial-gradient(circle at 30% 30%, #fff 0%, #ffe8a6 35%, #e7c96b 60%, #a88b37 100%); box-shadow:0 0 24px rgba(244,208,111,.45)}
-    .logo .brand{font-size:18px}
-    .nav a{color:var(--muted); text-decoration:none; margin-left:16px; font-size:14px}
-    .nav a:hover{color:var(--fg)}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(to bottom, rgba(15,12,26,.85), rgba(15,12,26,.35));
+      border-bottom:1px solid var(--ring);
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 18px}
+    .row{display:flex; align-items:center; justify-content:space-between; gap:14px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+    .moon{
+      width:18px; height:18px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff6cf 0%, #ffe89a 45%, #ffda6b 60%, #d9b454 100%);
+      box-shadow:0 0 18px rgba(255,220,112,.55), 0 0 40px rgba(255,200,85,.2);
+    }
+    nav a{color:var(--muted); text-decoration:none; margin-left:16px}
+    nav a:hover{color:#fff}
 
-    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:center; padding:20px 0 12px}
-    @media (max-width: 860px){.hero{grid-template-columns:1fr;}}
+    .hero{padding:60px 18px 26px}
+    .hero h1{margin:8px 0 6px; font-size:42px; letter-spacing:.2px}
+    .hero p{margin:0; color:var(--muted)}
 
-    .title{font-size:38px; line-height:1.15; font-weight:800; margin:0 0 10px}
-    .title .zap{color:var(--gold)}
-    .tagline{color:var(--muted); font-size:18px; margin:0 0 20px}
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 8px;
+    }
+    .btn{
+      appearance:none; border:1px solid var(--ring); color:var(--text); background:linear-gradient(180deg,#221a3f,#1a1530);
+      padding:9px 14px; border-radius:12px; cursor:pointer; box-shadow:var(--shadow);
+    }
+    .btn:hover{border-color:#6b61a8}
+    .btn-accent{background:linear-gradient(180deg,#ffd66a,#ffb94f); color:#1a1306; border:none}
+    .btn-accent:hover{filter:saturate(110%)}
 
-    .card{background:rgba(26,22,48,.72); border:1px solid rgba(244,208,111,.12); border-radius:18px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:var(--grid-gap);
+    }
+    @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:620px){ .grid{grid-template-columns:1fr} .hero h1{font-size:32px} }
 
-    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
-    .btn{appearance:none; border:1px solid rgba(244,208,111,.35); background:transparent; color:var(--gold); padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600}
-    .btn:hover{background:rgba(244,208,111,.09)}
+    .card{
+      background:linear-gradient(180deg, var(--card), #120f22);
+      border:1px solid var(--ring); border-radius:var(--radius); overflow:hidden;
+      box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .card:hover{transform:translateY(-3px); border-color:#5e56a2}
+    .thumb{
+      display:block; width:100%; aspect-ratio:1/1; object-fit:cover; background:#0b0914;
+    }
+    .meta{padding:14px}
+    .title{margin:0 0 6px; font-weight:700}
+    .desc{margin:0 0 10px; color:var(--muted); font-size:14px}
+    .meta .row{justify-content:space-between}
+    .tiny{font-size:12px; color:var(--muted)}
+    .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:6px; vertical-align:1px}
 
-    .qrbox{display:flex; flex-direction:column; align-items:center; gap:10px}
-    .qr{width:220px; height:220px; border-radius:12px; background:#fff; display:block; box-shadow:0 8px 30px rgba(0,0,0,.25)}
-    .small{color:var(--muted); font-size:13px}
-
-    .node{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; margin-top:14px}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:14px; color:#f7f6fb; word-break:break-all}
-
-    .about{margin-top:28px; color:var(--fg); line-height:1.7}
-    .links{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
-
-    footer{margin-top:48px; padding-top:16px; border-top:1px dashed rgba(244,208,111,.25); color:var(--muted); font-size:13px}
-
-    /* Subcards */
-    .subgrid{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:22px}
-    @media (max-width: 860px){.subgrid{grid-template-columns:1fr}}
-    .subcard .label{color:var(--muted); font-size:13px; margin-bottom:6px}
-    .subcard .value{font-weight:700}
+    .footer{
+      margin:40px 0 80px; color:var(--muted); font-size:14px; text-align:center;
+    }
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0e0b1a; border:1px solid var(--ring); border-radius:6px; padding:2px 6px}
+    a.inline{color:#aee0ff}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">
-        <div class="moon" aria-hidden="true"></div>
-        <div class="brand">Dalbit</div>
-      </div>
-      <nav class="nav">
-        <!-- 필요하면 외부 링크를 채우세요 -->
+  <header>
+    <div class="wrap row">
+      <div class="brand"><span class="moon" aria-hidden="true"></span> Dalbit</div>
+      <nav>
+        <a href="#gallery">Gallery</a>
         <a href="#about">About</a>
-        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
+  <main class="wrap">
     <section class="hero">
-      <div>
-        <h1 class="title"><span class="zap">⚡</span> Dalbit Lightning Portal</h1>
-        <p class="tagline">Run your own light under the moon.</p>
+      <h1>Dalbit Pixel Gallery</h1>
+      <p>비트코인 × 라이트닝에서 영감받은 픽셀아트 모음. 달빛 아래에서 빛나는 작은 사토시들을 기록합니다.</p>
 
-        <div class="card">
-          <div class="subgrid">
-            <div class="subcard">
-              <div class="label">Lightning Address / LNURL</div>
-              <div class="value small">페이지의 QR을 스캔하거나 아래 버튼을 눌러 결제 테스트</div>
-            </div>
-            <div class="subcard">
-              <div class="label">Node ID (CLN/LND)</div>
-              <div class="value mono" id="node-id">REPLACE_ME_NODE_ID_02abcdef...1234</div>
-            </div>
-            <div class="subcard">
-              <div class="label">Status</div>
-              <div class="value">Online ✅</div>
-            </div>
-          </div>
-
-          <div class="node">
-            <div class="actions">
-              <a class="btn" id="pay-link" href="REPLACE_ME_LNURL_OR_BOLT12" target="_blank" rel="noopener">Send sats ⚡</a>
-              <button class="btn" id="copy-node">Copy Node ID</button>
-            </div>
-            <span class="small">※ 버튼 링크와 노드 아이디는 나중에 실제 값으로 바꾸세요.</span>
-          </div>
-        </div>
-
-        <div class="about" id="about">
-          <p>비트코인은 기술이자 태도입니다. 라이트닝 네트워크는 달빛처럼 조용히 흐르는 빛. 나는 내 손으로 운영하는 노드 위에서, 작은 사토시가 오가는 순간의 기쁨을 사랑합니다.</p>
-        </div>
-      </div>
-
-      <aside class="card qrbox">
-        <!--
-          ▼ 여기에 QR 이미지(예: LNbits가 만든 LNURLp QR)를 넣으세요.
-          예시: <img class="qr" src="https://example.com/qr.png" alt="LNURL QR" />
-        -->
-        <img class="qr" src="REPLACE_ME_QR_IMAGE_URL" alt="Lightning QR" />
-        <div class="small">스캔해서 소액 결제를 테스트해보세요.</div>
-      </aside>
-    </section>
-
-    <section id="links" class="card" style="margin-top:28px">
-      <div class="links">
-        <a class="btn" href="https://explorer.dalbit.me" target="_blank" rel="noopener">Node Explorer</a>
-        <a class="btn" href="https://blog.dalbit.me" target="_blank" rel="noopener">Journal / Blog</a>
-        <a class="btn" href="https://wallet.dalbit.me" target="_blank" rel="noopener">LNbits</a>
-        <a class="btn" href="https://github.com/REPLACE_ME" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://nostr.band/?q=npub_REPLACE_ME" target="_blank" rel="noopener">Nostr</a>
+      <div class="toolbar">
+        <a class="btn btn-accent" href="lightning:garyeong@strike.me" id="tip">⚡ Lightning Tip</a>
+        <button class="btn" id="copyLn">Copy Lightning Address</button>
+        <a class="btn" href="#about">About this Collection</a>
       </div>
     </section>
 
-    <footer>
-      © 2025 Dalbit.me • Self‑sovereign Lightning Identity
-    </footer>
-  </div>
+    <section id="gallery" aria-label="artwork gallery" class="grid">
+      <article class="card">
+        <img class="thumb" loading="lazy" src="https://raw.githubusercontent.com/placeholder/placeholder/main/600x600.png" alt="SeedSigner corn screen, pixel style" />
+        <div class="meta">
+          <h3 class="title">SeedSigner — 🌽 Corn Screen</h3>
+          <p class="desc">시드사이너 화면에 옥수수 아이콘이 깜빡이는 버전. ‘CORN’ 단체에서 착안.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-10-24</span>
+            <a class="tiny inline" href="https://github.com/gxrxxxng/dalbit.me/commits/main" target="_blank" rel="noopener">Proof</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" loading="lazy" src="https://raw.githubusercontent.com/placeholder/placeholder/main/600x600.png" alt="Bitaxe pixel art" />
+        <div class="meta">
+          <h3 class="title">Bitaxe Gamma 601</h3>
+          <p class="desc">홈마이닝의 상징, Bitaxe를 보랏빛 그라데이션 위에.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-10-22</span>
+            <a class="tiny inline" href="https://github.com/gxrxxxng/dalbit.me/commits/main" target="_blank" rel="noopener">Proof</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" loading="lazy" src="https://raw.githubusercontent.com/placeholder/placeholder/main/600x600.png" alt="Lightning node portal, pixel icons" />
+        <div class="meta">
+          <h3 class="title">Lightning Portal</h3>
+          <p class="desc">달빛 아래 흐르는 라이트닝—작은 결제의 반짝임.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-10-20</span>
+            <a class="tiny inline" href="https://github.com/gxrxxxng/dalbit.me/commits/main" target="_blank" rel="noopener">Proof</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="about" class="hero" style="padding-top:40px">
+      <h2 style="margin:0 0 6px">About</h2>
+      <p style="color:var(--muted); margin-top:6px">
+        이곳의 모든 픽셀아트는 블록처럼 쌓인 기록 속에 남습니다.
+        각 작품의 커밋 히스토리는 <span class="kbd">Proof</span> 링크로 확인할 수 있으며, 그림을 올린 순간을 증명합니다.
+      </p>
+    </section>
+
+    <section id="contact" class="hero" style="padding-top:20px">
+      <h2 style="margin:0 0 6px">Contact</h2>
+      <p class="tiny">
+        제안/의뢰: <a class="inline" href="mailto:gr@dalbit.me">gr@dalbit.me</a>
+        · Lightning: <span id="lnaddr" class="kbd">garyeong@strike.me</span>
+      </p>
+    </section>
+
+    <p class="footer">© <span id="y"></span> Dalbit • Run your art under the moon.</p>
+  </main>
 
   <script>
-    // Node ID 복사 버튼
-    const btn = document.getElementById('copy-node');
-    const node = document.getElementById('node-id');
-    btn.addEventListener('click', async () => {
-      try{
-        await navigator.clipboard.writeText(node.textContent.trim());
-        btn.textContent = 'Copied!';
-        setTimeout(()=>btn.textContent='Copy Node ID', 1400);
-      }catch(e){
-        alert('복사에 실패했습니다. 수동으로 복사해주세요.');
-      }
-    });
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function(){
+      const addr = document.getElementById('lnaddr').textContent.trim();
+      const $btn = document.getElementById('copyLn');
+      $btn.addEventListener('click', async () => {
+        try{
+          await navigator.clipboard.writeText(addr);
+          const old = $btn.textContent;
+          $btn.textContent = 'Copied!';
+          setTimeout(()=>{$btn.textContent = old;}, 1500);
+        }catch(e){ alert('복사 실패. 수동으로 복사해주세요: ' + addr); }
+      });
+    })();
   </script>
 </body>
 </html>
