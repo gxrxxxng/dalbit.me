@@ -10,15 +10,11 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dalbit.me/" />
 
-  <!-- 폰트 로드 안정성 강화 -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
   <style>
-    /* Pixel-vibe Korean font (DungGeunMo) */
+    /* Self-hosted Korean pixel font: Galmuri9 (SIL Open Font License) */
     @font-face {
-      font-family: 'DungGeunMo';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/DungGeunMo.woff?v=4') format('woff');
+      font-family: 'Galmuri9';
+      src: url('/assets/fonts/galmuri/Galmuri9.woff2?v=2') format('woff2');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -31,12 +27,12 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-
     html { font-size:16px; line-height:1.6; }
+
     body{
       margin:0; color:var(--text);
-      font-family:'DungGeunMo', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", Helvetica, Arial;
-      letter-spacing:.1px;
+      font-family:'Galmuri9', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", Helvetica, Arial;
+      letter-spacing:.2px;
       background:
         radial-gradient(1200px 700px at 10% -20%, #352a66 0%, rgba(53,42,102,0) 60%),
         radial-gradient(1000px 600px at 120% 10%, #2b1f52 0%, rgba(43,31,82,0) 60%),
@@ -111,7 +107,7 @@
   <main class="wrap">
     <section class="hero">
       <h1>Dalbit Pixel Gallery</h1>
-      <p>비트코인 × 라이트닝에서 영감받은 픽셀아트 모음. 빛나는 작은 사토시들을 기록합니다.</p>
+      <p>비트코인 × 라이트닝 픽셀아트 모음. 빛나는 작은 사토시들을 기록합니다.</p>
 
       <div class="toolbar">
         <a class="btn btn-accent" href="lightning:garyeong@strike.me" id="tip">⚡ Lightning Tip</a>
