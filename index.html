@@ -9,46 +9,31 @@
   <meta property="og:description" content="비트코인 × 픽셀아트 컬렉션" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dalbit.me/" />
-
   <style>
     :root{
-      --bg-0:#0f0c1a;
-      --bg-1:#1a1530;
-      --bg-2:#211a3d;
-      --text:#e9e6ff;
-      --muted:#bfb9e6;
-      --accent:#ffcc57;
-      --accent-2:#7dd3fc;
-      --card:#17132a;
-      --ring:rgba(255,255,255,.12);
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-      --radius:18px;
-      --grid-gap:16px;
-      --max:1100px;
+      --bg-0:#0f0c1a; --bg-1:#1a1530; --text:#e9e6ff; --muted:#bfb9e6;
+      --accent:#ffcc57; --card:#17132a; --ring:rgba(255,255,255,.12);
+      --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --grid-gap:16px; --max:1100px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box} html,body{height:100%}
     body{
-      margin:0; color:var(--text); font:500 16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Helvetica,Arial;
+      margin:0; color:var(--text);
+      font:500 16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Helvetica,Arial;
       background:
         radial-gradient(1200px 700px at 10% -20%, #352a66 0%, rgba(53,42,102,0) 60%),
         radial-gradient(1000px 600px at 120% 10%, #2b1f52 0%, rgba(43,31,82,0) 60%),
         linear-gradient(180deg, var(--bg-1), var(--bg-0));
     }
-    header{
-      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
       background:linear-gradient(to bottom, rgba(15,12,26,.85), rgba(15,12,26,.35));
-      border-bottom:1px solid var(--ring);
-    }
-    .wrap{max-width:var(--max); margin:0 auto; padding:18px 18px}
+      border-bottom:1px solid var(--ring);}
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px}
     .row{display:flex; align-items:center; justify-content:space-between; gap:14px}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
-    .brand:hover{opacity:.9}
-    .moon{
-      width:18px; height:18px; border-radius:50%;
+    .brand:hover{opacity:.92}
+    .moon{width:18px; height:18px; border-radius:50%;
       background: radial-gradient(circle at 30% 30%, #fff6cf 0%, #ffe89a 45%, #ffda6b 60%, #d9b454 100%);
-      box-shadow:0 0 18px rgba(255,220,112,.55), 0 0 40px rgba(255,200,85,.2);
-    }
+      box-shadow:0 0 18px rgba(255,220,112,.55), 0 0 40px rgba(255,200,85,.2);}
     nav a{color:var(--muted); text-decoration:none; margin-left:16px}
     nav a:hover{color:#fff}
 
@@ -57,11 +42,8 @@
     .hero p{margin:0; color:var(--muted)}
 
     .toolbar{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 8px;}
-    .btn{
-      appearance:none; border:1px solid var(--ring); color:var(--text);
-      background:linear-gradient(180deg,#221a3f,#1a1530);
-      padding:9px 14px; border-radius:12px; cursor:pointer; box-shadow:var(--shadow);
-    }
+    .btn{appearance:none; border:1px solid var(--ring); color:var(--text);
+      background:linear-gradient(180deg,#221a3f,#1a1530); padding:9px 14px; border-radius:12px; cursor:pointer; box-shadow:var(--shadow);}
     .btn:hover{border-color:#6b61a8}
     .btn-accent{background:linear-gradient(180deg,#ffd66a,#ffb94f); color:#1a1306; border:none}
     .btn-accent:hover{filter:saturate(110%)}
@@ -70,21 +52,17 @@
     @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:620px){ .grid{grid-template-columns:1fr} .hero h1{font-size:32px} }
 
-    .card{
-      background:linear-gradient(180deg, var(--card), #120f22);
+    .card{background:linear-gradient(180deg, var(--card), #120f22);
       border:1px solid var(--ring); border-radius:var(--radius); overflow:hidden;
-      box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      position:relative;
-    }
+      box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; position:relative;}
     .card:hover{transform:translateY(-3px); border-color:#5e56a2}
     .thumb{display:block; width:100%; aspect-ratio:1/1; object-fit:cover; background:#0b0914;}
     .meta{padding:14px}
     .title{margin:0 0 6px; font-weight:700}
     .desc{margin:0 0 10px; color:var(--muted); font-size:14px}
-    .meta .row{justify-content:space-between}
+    .meta .row{justify-content:space-between; display:flex; align-items:center}
     .tiny{font-size:12px; color:var(--muted)}
     .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:6px; vertical-align:1px}
-
     .footer{margin:40px 0 80px; color:var(--muted); font-size:14px; text-align:center;}
     .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0e0b1a; border:1px solid var(--ring); border-radius:6px; padding:2px 6px}
     a.inline{color:#aee0ff}
@@ -95,7 +73,7 @@
   <header>
     <div class="wrap row">
       <a href="/" class="brand" style="text-decoration:none; color:inherit;">
-        <span class="moon"></span> Dalbit
+        <span class="moon" aria-hidden="true"></span> Dalbit
       </a>
       <nav>
         <a href="#gallery">Gallery</a>
@@ -119,18 +97,21 @@
     </section>
 
     <section id="gallery" class="grid">
-      <!-- 카드 1 -->
+      <!-- 카드 1 (주소만 바꿔도 됨) -->
       <article class="card">
         <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank" rel="noopener">
-          <img class="thumb" data-tweet="https://x.com/gxrxxxng/status/1981310401754386533" alt="SeedSigner corn screen (X에서 보기)" />
+          <!-- 파란글씨 방지: 로딩 전 투명 1x1 이미지 -->
+          <img class="thumb" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" 
+               data-tweet="https://x.com/gxrxxxng/status/1981310401754386533" 
+               alt="SeedSigner corn screen (X에서 보기)" />
           <span class="badge">▶ Watch on X</span>
         </a>
         <div class="meta">
           <h3 class="title">SeedSigner — 🌽 Corn Screen</h3>
-          <p class="desc">시드사이너 화면에 옥수수 아이콘이 깜빡이는 버전. ‘CORN GANG’ 가입 기념.</p>
+          <p class="desc">시드사이너 화면에 옥수수 아이콘이 깜빡이는 버전. ‘CORN’ 단체에서 착안.</p>
           <div class="row">
             <span class="tiny"><span class="dot"></span>2025-10-24</span>
-            <a class="tiny inline" href="https://github.com/gxrxxxng/dalbit.me/commit/e1eba7f" target="_blank" rel="noopener">Proof</a>
+            <a class="tiny inline" href="https://github.com/gxrxxxng/dalbit.me/commits/main" target="_blank" rel="noopener">Proof</a>
           </div>
         </div>
       </article>
@@ -140,7 +121,6 @@
       <h2>About</h2>
       <p style="color:var(--muted)">
         이곳의 모든 픽셀아트는 블록처럼 쌓인 기록 속에 남습니다.
-        각 작품의 커밋 히스토리는 <span class="kbd">Proof</span> 링크로 확인할 수 있으며, 그림을 올린 순간을 증명합니다.
       </p>
     </section>
 
@@ -156,10 +136,9 @@
     <p class="footer">© <span id="y"></span> Dalbit • Run your art under the moon.</p>
   </main>
 
-  <!-- ⚡ 자동 트윗 썸네일 로더 -->
   <script>
+    // 연도 / 라이트닝 복사
     document.getElementById('y').textContent = new Date().getFullYear();
-
     (function(){
       const addr = document.getElementById('lnaddr')?.textContent.trim();
       const $btn = document.getElementById('copyLn');
@@ -175,34 +154,60 @@
       }
     })();
 
-    async function getTweetThumb(tweetUrl){
-      const tweetId = tweetUrl.split('/status/')[1]?.split('?')[0];
-      if(!tweetId) return null;
-      const apiUrl = `https://cdn.syndication.twimg.com/tweet-result?id=${tweetId}`;
-      try{
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        return data?.image_url || null;
-      }catch(e){
-        console.warn('트윗 썸네일 로드 실패:', e);
-        return null;
-      }
+    // 1차: 트위터 syndication API
+    async function fetchFromSyndication(id){
+      const url = `https://cdn.syndication.twimg.com/tweet-result?id=${id}`;
+      const r = await fetch(url);
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      const d = await r.json();
+      const candidates = [
+        d?.image_url,
+        Array.isArray(d?.photos) ? d.photos[0] : null,
+        d?.mediaDetails?.[0]?.media_url_https,
+        d?.mediaDetails?.[0]?.media_url,
+        d?.entities?.media?.[0]?.media_url_https,
+        d?.entities?.media?.[0]?.media_url
+      ].filter(Boolean);
+      return candidates[0] || null;
     }
 
+    // 2차: 읽기 프록시(r.jina.ai)에서 og:image 파싱
+    async function fetchFromOgImage(tweetUrl){
+      const proxy = 'https://r.jina.ai/http://';
+      const r = await fetch(proxy + tweetUrl.replace(/^https?:\/\//,''));
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      const html = await r.text();
+      const m = html.match(/property=["']og:image["']\s+content=["']([^"']+)["']/i);
+      return m ? m[1] : null;
+    }
+
+    function getId(url){
+      const pure = url.split('?')[0];
+      return pure.split('/status/')[1] || null;
+    }
+
+    // 로더
     (async function(){
       const imgs = document.querySelectorAll('img[data-tweet]');
       for(const img of imgs){
         const tweetUrl = img.dataset.tweet;
-        const thumb = await getTweetThumb(tweetUrl);
-        if(thumb){ img.src = thumb; }
-        else{
+        const id = getId(tweetUrl);
+        let thumb = null;
+        try{ if(id) thumb = await fetchFromSyndication(id); }catch(_){}
+        if(!thumb){
+          try{ thumb = await fetchFromOgImage(tweetUrl); }catch(_){}
+        }
+        if(thumb){
+          img.src = thumb;
+        }else{
+          // 최종 실패: 플레이스홀더 유지(파란텍스트 방지)
           img.style.background = "#0b0914";
           img.style.color = "#777";
           img.style.fontSize = "12px";
           img.style.display = "flex";
           img.style.alignItems = "center";
           img.style.justifyContent = "center";
-          img.textContent = "No preview";
+          img.alt = "No preview";
         }
       }
     })();
