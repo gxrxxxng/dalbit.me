@@ -9,24 +9,38 @@
   <meta property="og:description" content="비트코인 × 픽셀아트 컬렉션" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dalbit.me/" />
+
   <style>
+    /* Pixel-vibe Korean font */
+    @font-face {
+      font-family: 'DungGeunMo';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/DungGeunMo.woff') format('woff');
+      font-weight: normal; font-style: normal;
+    }
+
     :root{
       --bg-0:#0f0c1a; --bg-1:#1a1530; --text:#e9e6ff; --muted:#bfb9e6;
       --accent:#ffcc57; --card:#17132a; --ring:rgba(255,255,255,.12);
       --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --grid-gap:16px; --max:1100px;
     }
-    *{box-sizing:border-box} html,body{height:100%}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
     body{
       margin:0; color:var(--text);
-      font:500 16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Helvetica,Arial;
+      font:500 16px/1.6 'DungGeunMo', ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Helvetica,Arial;
+      letter-spacing:.1px;
       background:
         radial-gradient(1200px 700px at 10% -20%, #352a66 0%, rgba(53,42,102,0) 60%),
         radial-gradient(1000px 600px at 120% 10%, #2b1f52 0%, rgba(43,31,82,0) 60%),
         linear-gradient(180deg, var(--bg-1), var(--bg-0));
     }
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
+
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
       background:linear-gradient(to bottom, rgba(15,12,26,.85), rgba(15,12,26,.35));
-      border-bottom:1px solid var(--ring);}
+      border-bottom:1px solid var(--ring);
+    }
     .wrap{max-width:var(--max); margin:0 auto; padding:18px}
     .row{display:flex; align-items:center; justify-content:space-between; gap:14px}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
@@ -97,21 +111,20 @@
     </section>
 
     <section id="gallery" class="grid">
-      <!-- 카드 1 (주소만 바꿔도 됨) -->
+      <!-- 카드 1 -->
       <article class="card">
-        <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank" rel="noopener">
-          <!-- 파란글씨 방지: 로딩 전 투명 1x1 이미지 -->
-          <img class="thumb" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" 
-               data-tweet="https://x.com/gxrxxxng/status/1981310401754386533" 
-               alt="SeedSigner corn screen (X에서 보기)" />
+        <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank" rel="noopener"
+           aria-label="SeedSigner Corn Screen — X에서 보기" style="position:relative; display:block;">
+          <img class="thumb"
+               src="assets/images/corn-thumb.png?v=1"
+               alt="SeedSigner corn screen, pixel style (워터마크 썸네일)" />
           <span class="badge">▶ Watch on X</span>
         </a>
         <div class="meta">
           <h3 class="title">SeedSigner — 🌽 Corn Screen</h3>
-          <p class="desc">시드사이너 화면에 옥수수 아이콘이 깜빡이는 버전. ‘CORN’ 단체에서 착안.</p>
+          <p class="desc">시드사이너 화면에 옥수수 아이콘이 깜빡이는 버전. ‘CORN GANG’ 가입 기념.</p>
           <div class="row">
-            <span class="tiny"><span class="dot"></span>2025-10-24</span>
-            <a class="tiny inline" href="https://github.com/gxrxxxng/dalbit.me/commits/main" target="_blank" rel="noopener">Proof</a>
+            <span class="tiny"><span class="dot"></span>2025-10-23</span>
           </div>
         </div>
       </article>
@@ -127,9 +140,8 @@
     <section id="contact" class="hero" style="padding-top:20px">
       <h2>Contact</h2>
       <p class="tiny">
-        제안/의뢰: <a class="inline" href="mailto:gr@dalbit.me">gr@dalbit.me</a> ·
-        Lightning: <span id="lnaddr" class="kbd">garyeong@strike.me</span> ·
         X: <a class="inline" href="https://x.com/gxrxxxng?s=21" target="_blank" rel="noopener">@gxrxxxng</a>
+        · Lightning: <span id="lnaddr" class="kbd">garyeong@strike.me</span>
       </p>
     </section>
 
@@ -151,64 +163,6 @@
             setTimeout(()=>{$btn.textContent = old;}, 1500);
           }catch(e){ alert('복사 실패. 수동으로 복사해주세요: ' + addr); }
         });
-      }
-    })();
-
-    // 1차: 트위터 syndication API
-    async function fetchFromSyndication(id){
-      const url = `https://cdn.syndication.twimg.com/tweet-result?id=${id}`;
-      const r = await fetch(url);
-      if(!r.ok) throw new Error('HTTP '+r.status);
-      const d = await r.json();
-      const candidates = [
-        d?.image_url,
-        Array.isArray(d?.photos) ? d.photos[0] : null,
-        d?.mediaDetails?.[0]?.media_url_https,
-        d?.mediaDetails?.[0]?.media_url,
-        d?.entities?.media?.[0]?.media_url_https,
-        d?.entities?.media?.[0]?.media_url
-      ].filter(Boolean);
-      return candidates[0] || null;
-    }
-
-    // 2차: 읽기 프록시(r.jina.ai)에서 og:image 파싱
-    async function fetchFromOgImage(tweetUrl){
-      const proxy = 'https://r.jina.ai/http://';
-      const r = await fetch(proxy + tweetUrl.replace(/^https?:\/\//,''));
-      if(!r.ok) throw new Error('HTTP '+r.status);
-      const html = await r.text();
-      const m = html.match(/property=["']og:image["']\s+content=["']([^"']+)["']/i);
-      return m ? m[1] : null;
-    }
-
-    function getId(url){
-      const pure = url.split('?')[0];
-      return pure.split('/status/')[1] || null;
-    }
-
-    // 로더
-    (async function(){
-      const imgs = document.querySelectorAll('img[data-tweet]');
-      for(const img of imgs){
-        const tweetUrl = img.dataset.tweet;
-        const id = getId(tweetUrl);
-        let thumb = null;
-        try{ if(id) thumb = await fetchFromSyndication(id); }catch(_){}
-        if(!thumb){
-          try{ thumb = await fetchFromOgImage(tweetUrl); }catch(_){}
-        }
-        if(thumb){
-          img.src = thumb;
-        }else{
-          // 최종 실패: 플레이스홀더 유지(파란텍스트 방지)
-          img.style.background = "#0b0914";
-          img.style.color = "#777";
-          img.style.fontSize = "12px";
-          img.style.display = "flex";
-          img.style.alignItems = "center";
-          img.style.justifyContent = "center";
-          img.alt = "No preview";
-        }
       }
     })();
   </script>
