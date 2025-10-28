@@ -11,7 +11,6 @@
   <meta property="og:url" content="https://dalbit.me/" />
 
   <style>
-    /* Self-hosted Korean pixel font: Galmuri9 (SIL Open Font License) */
     @font-face {
       font-family: 'Galmuri9';
       src: url('/assets/fonts/galmuri/Galmuri9.woff2?v=2') format('woff2');
@@ -32,24 +31,21 @@
     body{
       margin:0; color:var(--text);
       font-family:'Galmuri9', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", Helvetica, Arial;
-      letter-spacing:.2px;
       background:
         radial-gradient(1200px 700px at 10% -20%, #352a66 0%, rgba(53,42,102,0) 60%),
         radial-gradient(1000px 600px at 120% 10%, #2b1f52 0%, rgba(43,31,82,0) 60%),
         linear-gradient(180deg, var(--bg-1), var(--bg-0));
     }
-    *, *::before, *::after { font-family: inherit; }
-    button, input, select, textarea { font: inherit; }
 
     header{
       position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
       background:linear-gradient(to bottom, rgba(15,12,26,.85), rgba(15,12,26,.35));
       border-bottom:1px solid var(--ring);
     }
+
     .wrap{max-width:var(--max); margin:0 auto; padding:18px}
     .row{display:flex; align-items:center; justify-content:space-between; gap:14px}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
-    .brand:hover{opacity:.92}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700;}
     .moon{width:18px; height:18px; border-radius:50%;
       background: radial-gradient(circle at 30% 30%, #fff6cf 0%, #ffe89a 45%, #ffda6b 60%, #d9b454 100%);
       box-shadow:0 0 18px rgba(255,220,112,.55), 0 0 40px rgba(255,200,85,.2);}
@@ -57,15 +53,8 @@
     nav a:hover{color:#fff}
 
     .hero{padding:60px 18px 26px}
-    .hero h1{margin:8px 0 6px; font-size:42px; letter-spacing:.2px}
+    .hero h1{margin:8px 0 6px; font-size:42px;}
     .hero p{margin:0; color:var(--muted)}
-
-    .toolbar{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 8px;}
-    .btn{appearance:none; border:1px solid var(--ring); color:var(--text);
-      background:linear-gradient(180deg,#221a3f,#1a1530); padding:9px 14px; border-radius:12px; cursor:pointer; box-shadow:var(--shadow);}
-    .btn:hover{border-color:#6b61a8}
-    .btn-accent{background:linear-gradient(180deg,#ffd66a,#ffb94f); color:#1a1306; border:none}
-    .btn-accent:hover{filter:saturate(110%)}
 
     .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--grid-gap);}
     @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr)} }
@@ -73,19 +62,26 @@
 
     .card{background:linear-gradient(180deg, var(--card), #120f22);
       border:1px solid var(--ring); border-radius:var(--radius); overflow:hidden;
-      box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; position:relative;}
+      box-shadow:var(--shadow); transition:transform .18s ease, border-color .18s ease; position:relative;}
     .card:hover{transform:translateY(-3px); border-color:#5e56a2}
-    .thumb{display:block; width:85%; margin:0 auto; aspect-ratio:1/1; object-fit:cover; background:#0b0914; border-radius:12px;}
+
+    .thumb{display:block; width:85%; margin:0 auto; aspect-ratio:1/1; object-fit:cover;
+      background:#0b0914; border-radius:12px; image-rendering:pixelated;}
+
     .meta{padding:14px}
     .title{margin:0 0 6px; font-weight:700}
     .desc{margin:0 0 10px; color:var(--muted); font-size:14px}
-    .meta .row{justify-content:space-between; display:flex; align-items:center}
+    .row{justify-content:space-between; display:flex; align-items:center}
     .tiny{font-size:12px; color:var(--muted)}
-    .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:6px; vertical-align:1px}
-    .footer{margin:40px 0 80px; color:var(--muted); font-size:14px; text-align:center;}
-    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0e0b1a; border:1px solid var(--ring); border-radius:6px; padding:2px 6px}
-    a.inline{color:#aee0ff}
-    .badge{position:absolute; right:10px; bottom:10px; background:rgba(0,0,0,.55); color:#fff; font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.2);}
+    .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:6px;}
+
+    .badge, .badge-new, .badge-collect{
+      position:absolute; font-size:12px; padding:4px 8px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.2);
+    }
+    .badge{right:10px; bottom:10px; background:rgba(0,0,0,.55); color:#fff;}
+    .badge-new{left:10px; top:10px; background:linear-gradient(180deg,#ffd66a,#ffb94f); color:#1a1306; border:1px solid rgba(0,0,0,.15);}
+    .badge-collect{left:10px; top:10px; background:linear-gradient(180deg,#ffd66a,#ffb94f); color:#1a1306; border:1px solid rgba(0,0,0,.15);}
   </style>
 </head>
 
@@ -93,7 +89,7 @@
   <header>
     <div class="wrap row">
       <a href="/" class="brand" style="text-decoration:none; color:inherit;">
-        <span class="moon" aria-hidden="true"></span> Dalbit
+        <span class="moon"></span> Dalbit
       </a>
       <nav>
         <a href="#gallery">Gallery</a>
@@ -117,19 +113,29 @@
     </section>
 
     <section id="gallery" class="grid">
-      <!-- 카드 1: Pop your corn (맨 위로 이동) -->
+      <!-- NEW 작품 -->
       <article class="card">
-        <a href="https://x.com/gxrxxxng/status/1982032167409729581?s=46" 
-           target="_blank" rel="noopener" 
-           aria-label="Pop your corn — X에서 보기" 
-           style="position:relative; display:block;">
-          <img class="thumb" src="assets/images/251025 popcorn-thumb.png" 
-               alt="Pop your corn pixel art (X에서 보기)" />
+        <a href="#" style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/251027bitcoincenter-thumb.png" alt="At the Bitcoin Center" />
+          <span class="badge-new">NEW</span>
+        </a>
+        <div class="meta">
+          <h3 class="title">At the Bitcoin Center 🧭</h3>
+          <p class="desc">커피와 쿠키, 오렌지 알약을 드세요.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-10-27</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Pop your corn -->
+      <article class="card">
+        <a href="https://x.com/gxrxxxng/status/1982032167409729581?s=46" target="_blank" rel="noopener" style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/251025 popcorn-thumb.png" alt="Pop your corn pixel art" />
           <span class="badge">▶ Watch on X</span>
         </a>
-
         <div class="meta">
-          <h3 class="title">Pop your corn ⚡ </h3>
+          <h3 class="title">Pop your corn ⚡</h3>
           <p class="desc">옥수수가 번개를 맞아 터지는 순간.</p>
           <div class="row">
             <span class="tiny"><span class="dot"></span>2025-10-25</span>
@@ -137,13 +143,11 @@
         </div>
       </article>
 
-      <!-- 카드 2: Sign of Corn -->
+      <!-- Sign of Corn (Sold Out) -->
       <article class="card">
-        <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank" rel="noopener"
-           aria-label="Sign of Corn — X에서 보기" style="position:relative; display:block;">
-          <img class="thumb"
-               src="assets/images/corn-thumb.png?v=4"
-               alt="SeedSigner corn screen, pixel style (워터마크 썸네일)" />
+        <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank" rel="noopener" style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/corn-thumb.png?v=4" alt="Sign of Corn pixel art" />
+          <span class="badge-collect">Sold Out ⚡</span>
           <span class="badge">▶ Watch on X</span>
         </a>
         <div class="meta">
@@ -174,20 +178,18 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    (function(){
-      const addr = document.getElementById('lnaddr')?.textContent.trim();
-      const $btn = document.getElementById('copyLn');
-      if($btn && addr){
-        $btn.addEventListener('click', async () => {
-          try{
-            await navigator.clipboard.writeText(addr);
-            const old = $btn.textContent;
-            $btn.textContent = 'Copied!';
-            setTimeout(()=>{$btn.textContent = old;}, 1500);
-          }catch(e){ alert('복사 실패. 수동으로 복사해주세요: ' + addr); }
-        });
-      }
-    })();
+    const addr = document.getElementById('lnaddr')?.textContent.trim();
+    const $btn = document.getElementById('copyLn');
+    if($btn && addr){
+      $btn.addEventListener('click', async () => {
+        try{
+          await navigator.clipboard.writeText(addr);
+          const old = $btn.textContent;
+          $btn.textContent = 'Copied!';
+          setTimeout(()=>{$btn.textContent = old;}, 1500);
+        }catch(e){ alert('복사 실패. 수동으로 복사해주세요: ' + addr); }
+      });
+    }
   </script>
 </body>
 </html>
