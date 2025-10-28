@@ -73,7 +73,6 @@
     .tiny{font-size:12px; color:var(--muted)}
     .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:6px;}
 
-    /* 🎨 통일된 Galmuri 폰트 기반 배지 스타일 */
     .badge, .badge-new, .badge-sold {
       position: absolute;
       font-family: 'Galmuri9';
@@ -134,17 +133,17 @@
     </section>
 
     <section id="gallery" class="grid">
-<!-- 카드 1: Full Node (New) -->
+  <!-- 카드 1: Bitcoin Node (NEW 배지 + 썸네일 파일명 수정) -->
 <article class="card">
+  <span class="badge-new">NEW ✦</span>
   <a href="https://x.com/gxrxxxng/status/1983150500251087206?s=46"
      target="_blank" rel="noopener"
-     aria-label="Full Node — X에서 보기"
+     aria-label="Bitcoin Node — X에서 보기"
      style="position:relative; display:block;">
-    <img class="thumb" src="assets/images/251028-fullnode.png"
-         alt="Full Node pixel art (X에서 보기)" />
+    <img class="thumb" src="assets/images/251028-fullnode-thumb.png?v=1"
+         alt="Bitcoin Node pixel art (X에서 보기)" />
     <span class="badge">▶ Watch on X</span>
   </a>
-
   <div class="meta">
     <h3 class="title">Bitcoin Node 🌐</h3>
     <p class="desc">수많은 연결 속, 빛으로 존재하는 노드.</p>
@@ -154,11 +153,10 @@
   </div>
 </article>
 
-      
-      <!-- 카드 1: At the Bitcoin Center -->
+
+      <!-- 카드 2: At the Bitcoin Center (NEW 배지 제거) -->
       <article class="card">
-        <span class="badge-new">NEW ✦</span>
-        <a href="https://x.com/gxrxxxng/status/1982756745719263315?s=46" target="_blank">
+        <a href="https://x.com/gxrxxxng/status/1982756745719263315?s=46" target="_blank" rel="noopener">
           <img class="thumb" src="assets/images/251027bitcoincenter-thumb.png" alt="At the Bitcoin Center pixel art" />
           <span class="badge">▶ Watch on X</span>
         </a>
@@ -169,9 +167,9 @@
         </div>
       </article>
 
-      <!-- 카드 2: Pop your corn -->
+      <!-- 카드 3: Pop your corn -->
       <article class="card">
-        <a href="https://x.com/gxrxxxng/status/1982032167409729581?s=46" target="_blank">
+        <a href="https://x.com/gxrxxxng/status/1982032167409729581?s=46" target="_blank" rel="noopener">
           <img class="thumb" src="assets/images/251025 popcorn-thumb.png" alt="Pop your corn pixel art" />
           <span class="badge">▶ Watch on X</span>
         </a>
@@ -182,10 +180,10 @@
         </div>
       </article>
 
-      <!-- 카드 3: Sign of Corn -->
+      <!-- 카드 4: Sign of Corn -->
       <article class="card">
         <span class="badge-sold">SOLD OUT ⚡</span>
-        <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank">
+        <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank" rel="noopener">
           <img class="thumb" src="assets/images/corn-thumb.png?v=4" alt="SeedSigner corn screen pixel art" />
           <span class="badge">▶ Watch on X</span>
         </a>
@@ -213,6 +211,7 @@
   </main>
 
   <script>
+    // 연도
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
