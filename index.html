@@ -88,12 +88,14 @@
       box-shadow: 0 3px 8px rgba(0,0,0,.25);
     }
     .badge { right: 10px; bottom: 10px; background: rgba(0,0,0,.55); color:#fff; border:1px solid rgba(255,255,255,.25); }
-    .badge-new {
-      left:10px; top:10px;
-      background:linear-gradient(180deg,#ffe89a,#ffc64d);
-      color:#1a1306; border:1px solid rgba(0,0,0,.2);
-      text-shadow:0 1px 0 rgba(255,255,255,.4);
-    }
+ .badge-new {
+  left:10px; top:10px;
+  background:linear-gradient(180deg,#ffe89a,#ffc64d);
+  color:#1a1306; border:1px solid rgba(0,0,0,.2);
+  text-shadow:0 1px 0 rgba(255,255,255,.4);
+  z-index:10; /* 🔥 이 줄 추가 */
+}
+
     .badge-sold {
       left:10px; top:10px;
       background:linear-gradient(180deg,#2b2244,#1b142c);
