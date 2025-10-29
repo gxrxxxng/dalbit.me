@@ -88,14 +88,13 @@
       box-shadow: 0 3px 8px rgba(0,0,0,.25);
     }
     .badge { right: 10px; bottom: 10px; background: rgba(0,0,0,.55); color:#fff; border:1px solid rgba(255,255,255,.25); }
- .badge-new {
-  left:10px; top:10px;
-  background:linear-gradient(180deg,#ffe89a,#ffc64d);
-  color:#1a1306; border:1px solid rgba(0,0,0,.2);
-  text-shadow:0 1px 0 rgba(255,255,255,.4);
-  z-index:10; /* 🔥 이 줄 추가 */
-}
-
+    .badge-new {
+      left:10px; top:10px;
+      background:linear-gradient(180deg,#ffe89a,#ffc64d);
+      color:#1a1306; border:1px solid rgba(0,0,0,.2);
+      text-shadow:0 1px 0 rgba(255,255,255,.4);
+      z-index:10; /* NEW 뱃지가 썸네일 위로 보이도록 */
+    }
     .badge-sold {
       left:10px; top:10px;
       background:linear-gradient(180deg,#2b2244,#1b142c);
@@ -105,6 +104,32 @@
     }
 
     .footer{margin:40px 0 80px; color:var(--muted); font-size:14px; text-align:center;}
+
+    /* ▼ Lightning 복사 토스트 (Galmuri9 + 금빛 톤) */
+    #copy-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 72px;
+      transform: translateX(-50%);
+      padding: 10px 16px;
+      border-radius: 8px;
+      backdrop-filter: blur(8px);
+      background: rgba(245, 230, 150, 0.2);
+      color: #fceeb3;
+      font-family: 'Galmuri9', monospace;
+      font-size: 15px;
+      letter-spacing: 0.4px;
+      text-shadow: 0 0 6px rgba(255, 250, 200, 0.5);
+      border: 1px solid rgba(255, 230, 150, 0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 1000;
+    }
+    #copy-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-5px);
+    }
   </style>
 </head>
 
@@ -128,33 +153,35 @@
       <h1>Dalbit Pixel Gallery</h1>
       <p>가령의 픽셀아트 모음</p>
       <div class="toolbar">
-        <a class="btn btn-accent" href="lightning:garyeong@strike.me">⚡ Lightning Tip</a>
-        <button class="btn" id="copyLn">Copy Lightning Address</button>
+        <!-- ⚡ Lightning Tip: 주소 복사 동작 -->
+        <button id="tipCopyBtn" class="btn btn-accent" aria-label="Copy Lightning Address">
+          ⚡ Lightning Tip
+        </button>
+        <!-- 기존 Copy 버튼은 제거 -->
         <a class="btn" href="#about">About this Collection</a>
       </div>
     </section>
 
     <section id="gallery" class="grid">
-  <!-- 카드 1: Bitcoin Node (NEW 배지 + 썸네일 파일명 수정) -->
-<article class="card">
-  <span class="badge-new">NEW ✦</span>
-  <a href="https://x.com/gxrxxxng/status/1983150500251087206?s=46"
-     target="_blank" rel="noopener"
-     aria-label="Bitcoin Node — X에서 보기"
-     style="position:relative; display:block;">
-    <img class="thumb" src="assets/images/251028-fullnode-thumb.png?v=1"
-         alt="Bitcoin Node pixel art (X에서 보기)" />
-    <span class="badge">▶ Watch on X</span>
-  </a>
-  <div class="meta">
-    <h3 class="title">Bitcoin Node 🌐</h3>
-    <p class="desc">수많은 연결 속, 빛으로 존재하는 노드.</p>
-    <div class="row">
-      <span class="tiny"><span class="dot"></span>2025-10-28</span>
-    </div>
-  </div>
-</article>
-
+      <!-- 카드 1: Bitcoin Node (NEW 배지 + 썸네일 파일명 수정) -->
+      <article class="card">
+        <span class="badge-new">NEW ✦</span>
+        <a href="https://x.com/gxrxxxng/status/1983150500251087206?s=46"
+           target="_blank" rel="noopener"
+           aria-label="Bitcoin Node — X에서 보기"
+           style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/251028-fullnode-thumb.png?v=1"
+               alt="Bitcoin Node pixel art (X에서 보기)" />
+          <span class="badge">▶ Watch on X</span>
+        </a>
+        <div class="meta">
+          <h3 class="title">Bitcoin Node 🌐</h3>
+          <p class="desc">수많은 연결 속, 빛으로 존재하는 노드.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-10-28</span>
+          </div>
+        </div>
+      </article>
 
       <!-- 카드 2: At the Bitcoin Center (NEW 배지 제거) -->
       <article class="card">
@@ -212,9 +239,55 @@
     <p class="footer">© <span id="y"></span> Dalbit • Crafted in pixels.</p>
   </main>
 
+  <!-- 연도 표기 -->
   <script>
-    // 연도
     document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- ⚡ Lightning 주소 복사 스크립트 -->
+  <script>
+    (function () {
+      const LIGHTNING_ADDRESS = 'garyeong@strike.me';
+      const btn = document.getElementById('tipCopyBtn');
+
+      async function copy(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch (_) {
+          // iOS/Safari 폴백
+          const el = document.createElement('input');
+          el.value = text;
+          document.body.appendChild(el);
+          el.select();
+          el.setSelectionRange(0, text.length);
+          const ok = document.execCommand('copy');
+          document.body.removeChild(el);
+          return ok;
+        }
+      }
+
+      function showToast(msg) {
+        let t = document.getElementById('copy-toast');
+        if (!t) {
+          t = document.createElement('div');
+          t.id = 'copy-toast';
+          t.setAttribute('role', 'status');
+          t.setAttribute('aria-live', 'polite');
+          document.body.appendChild(t);
+        }
+        t.textContent = msg;
+        t.className = 'show';
+        setTimeout(() => (t.className = ''), 1500);
+      }
+
+      if (btn) {
+        btn.addEventListener('click', async () => {
+          const ok = await copy(LIGHTNING_ADDRESS);
+          showToast(ok ? '⚡ Copied to clipboard!' : 'Copy failed… please check clipboard permissions');
+        });
+      }
+    })();
   </script>
 </body>
 </html>
