@@ -258,7 +258,6 @@
           ⚡ Lightning Tip
         </button>
 
-        <!-- ✅ 사토샵 링크만 너 URL로 교체하면 됨 -->
         <a class="btn" href="https://store.btcmap.kr/stores/rkfud/" target="_blank" rel="noopener">
           🛒 Satoshop
         </a>
@@ -317,8 +316,7 @@
         </div>
       </article>
 
-      <!-- ✅ 너가 “어제 경매 낙찰” 작품에 이렇게 붙이면 됨: data-status="sold" + badge-sold -->
-      <!-- 아래는 기존 SOLD 예시 -->
+      <!-- SOLD 예시: Sign of Corn -->
       <article class="card" data-status="sold">
         <span class="badge-sold">SOLD OUT ⚡</span>
         <a href="https://x.com/gxrxxxng/status/1981310401754386533" target="_blank" rel="noopener">
@@ -332,7 +330,7 @@
         </div>
       </article>
 
-      <!-- event 카드: 전시/행사 기록을 갤러리에 섞고 싶을 때 -->
+      <!-- EVENT 예시: Mini Conference -->
       <article class="card" data-status="event">
         <span class="badge-event">EVENT ✦</span>
         <a href="https://x.com/gxrxxxng/status/1989668977505964369?s=46"
@@ -351,133 +349,124 @@
         </div>
       </article>
 
-      <!-- 🔽 여기 아래로는 기존 카드들을 그대로 옮기되,
-           “판매중이면 available”, “품절이면 sold”, “행사성 기록이면 event”
-           data-status만 붙여주면 필터가 작동해.
-           (기존 NEW 뱃지는 유지 가능)
-      <!-- 카드 0: orange cat (NEW) -->
-<article class="card">
-  <a href="https://x.com/gxrxxxng/status/1994342411296797152?s=46"
-     target="_blank" rel="noopener"
-     aria-label="orange cat — X에서 보기"
-     style="position:relative; display:block;">
-    <img class="thumb" src="assets/images/251128-orange cat.png?v=1"
-         alt="orange cat (X에서 보기)" />
-    <span class="badge">▶ Watch on X</span>
-  </a>
+      <!-- 카드: orange cat (기본 available로 자동 처리됨) -->
+      <article class="card">
+        <a href="https://x.com/gxrxxxng/status/1994342411296797152?s=46"
+           target="_blank" rel="noopener"
+           aria-label="orange cat — X에서 보기"
+           style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/251128-orange cat.png?v=1"
+               alt="orange cat (X에서 보기)" />
+          <span class="badge">▶ Watch on X</span>
+        </a>
+        <div class="meta">
+          <h3 class="title">Orange cat 🐈</h3>
+          <p class="desc">비트코인의 온기 속에 잠든 오렌지.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-11-28</span>
+          </div>
+        </div>
+      </article>
 
-  <div class="meta">
-    <h3 class="title">Orange cat 🐈</h3>
-    <p class="desc">비트코인의 온기 속에 잠든 오렌지.</p>
-    <div class="row">
-      <span class="tiny"><span class="dot"></span>2025-11-28</span>
-    </div>
-  </div>
-</article>
+      <!-- 카드: keyringsigner -->
+      <article class="card">
+        <a href="https://x.com/gxrxxxng/status/1991865506555666599?s=46"
+           target="_blank" rel="noopener"
+           aria-label="keyringsigner — X에서 보기"
+           style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/251121-keyringsigner.png?v=1"
+               alt="keyringsigner (X에서 보기)" />
+          <span class="badge">▶ Watch on X</span>
+        </a>
+        <div class="meta">
+          <h3 class="title">SeedSigner with Charms 🩷</h3>
+          <p class="desc">나만의 'Bitcoin KEY' RING.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-11-21</span>
+          </div>
+        </div>
+      </article>
 
-       <!-- 카드 0: keyringsigner (NEW) -->
-<article class="card">
-  <a href="https://x.com/gxrxxxng/status/1991865506555666599?s=46"
-     target="_blank" rel="noopener"
-     aria-label="keyringsigner — X에서 보기"
-     style="position:relative; display:block;">
-    <img class="thumb" src="assets/images/251121-keyringsigner.png?v=1"
-         alt="keyringsigner (X에서 보기)" />
-    <span class="badge">▶ Watch on X</span>
-  </a>
+      <!-- 카드: bit-planet -->
+      <article class="card">
+        <a href="https://x.com/gxrxxxng/status/1991117663322755425?s=46"
+           target="_blank" rel="noopener"
+           aria-label="bit-planet — X에서 보기"
+           style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/251119-bitplanet.png?v=1"
+               alt="bit-planet (X에서 보기)" />
+          <span class="badge">▶ Watch on X</span>
+        </a>
+        <div class="meta">
+          <h3 class="title">Toward a Better Planet 🚀</h3>
+          <p class="desc">감시의 궤도를 벗어나, 내가 선택한 행성으로 향한다.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-11-19</span>
+          </div>
+        </div>
+      </article>
 
-  <div class="meta">
-    <h3 class="title">SeedSigner with Charms 🩷</h3>
-    <p class="desc">나만의 'Bitcoin KEY' RING.</p>
-    <div class="row">
-      <span class="tiny"><span class="dot"></span>2025-11-21</span>
-    </div>
-  </div>
-</article>
+      <!-- 카드: p2p 79sats -->
+      <article class="card">
+        <a href="https://x.com/gxrxxxng/status/1990387916174983451?s=46"
+           target="_blank" rel="noopener"
+           aria-label="p2p 79sats — X에서 보기"
+           style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/251117-p2p79sats-thumb.png?v=1"
+               alt="p2p 79sats (X에서 보기)" />
+          <span class="badge">▶ Watch on X</span>
+        </a>
+        <div class="meta">
+          <h3 class="title">Two Wallets, One Signal ⚡️</h3>
+          <p class="desc">우리가 만든 작은 네트워크.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-11-17</span>
+          </div>
+        </div>
+      </article>
 
+      <!-- 카드: Rabbit hole -->
+      <article class="card">
+        <a href="https://x.com/gxrxxxng/status/1990022843900530693?s=46"
+           target="_blank" rel="noopener"
+           aria-label="Rabbit hole — X에서 보기"
+           style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/251116-alice rabbit hole.png?v=1"
+               alt="Rabbit hole (X에서 보기)" />
+          <span class="badge">▶ Watch on X</span>
+        </a>
+        <div class="meta">
+          <h3 class="title">Rabbit hole 🐇</h3>
+          <p class="desc">아래로 내려갈수록, 비트코인은 더 밝게 빛났다.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-11-16</span>
+          </div>
+        </div>
+      </article>
 
-      <!-- 카드 0: bit-planet (NEW) -->
-<article class="card">
-  <a href="https://x.com/gxrxxxng/status/1991117663322755425?s=46"
-     target="_blank" rel="noopener"
-     aria-label="bit-planet — X에서 보기"
-     style="position:relative; display:block;">
-    <img class="thumb" src="assets/images/251119-bitplanet.png?v=1"
-         alt="bit-planet (X에서 보기)" />
-    <span class="badge">▶ Watch on X</span>
-  </a>
+      <!-- ✅ PAC-BTC (SOLD OUT) -->
+      <article class="card" data-status="sold">
+        <span class="badge-sold">SOLD OUT ⚡</span>
+        <a href="https://x.com/gxrxxxng/status/1989328925781287404?s=46"
+           target="_blank" rel="noopener"
+           aria-label="Pac-BTC — X에서 보기"
+           style="position:relative; display:block;">
+          <img class="thumb" src="assets/images/251114-bitcoin pacman.png?v=1"
+               alt="Pac-BTC (X에서 보기)" />
+          <span class="badge">▶ Watch on X</span>
+        </a>
+        <div class="meta">
+          <h3 class="title">Pac-BTC 👾</h3>
+          <p class="desc">화폐를 잡아먹으러 왔다.</p>
+          <div class="row">
+            <span class="tiny"><span class="dot"></span>2025-11-14</span>
+          </div>
+        </div>
+      </article>
 
-  <div class="meta">
-    <h3 class="title">Toward a Better Planet 🚀</h3>
-    <p class="desc">감시의 궤도를 벗어나, 내가 선택한 행성으로 향한다.</p>
-    <div class="row">
-      <span class="tiny"><span class="dot"></span>2025-11-19</span>
-    </div>
-  </div>
-</article>
-
-       <!-- 카드 0: p2p 79sats (NEW) -->
-<article class="card">
-  <a href="https://x.com/gxrxxxng/status/1990387916174983451?s=46"
-     target="_blank" rel="noopener"
-     aria-label="p2p 79sats — X에서 보기"
-     style="position:relative; display:block;">
-    <img class="thumb" src="assets/images/251117-p2p79sats-thumb.png?v=1"
-         alt="p2p 79sats (X에서 보기)" />
-    <span class="badge">▶ Watch on X</span>
-  </a>
-
-  <div class="meta">
-    <h3 class="title">Two Wallets, One Signal ⚡️</h3>
-    <p class="desc">우리가 만든 작은 네트워크.</p>
-    <div class="row">
-      <span class="tiny"><span class="dot"></span>2025-11-17</span>
-    </div>
-  </div>
-</article>
-
-
-      <!-- 카드 0: Rabbit hole (NEW) -->
-<article class="card">
-  <a href="https://x.com/gxrxxxng/status/1990022843900530693?s=46"
-     target="_blank" rel="noopener"
-     aria-label="Rabbit hole — X에서 보기"
-     style="position:relative; display:block;">
-    <img class="thumb" src="assets/images/251116-alice rabbit hole.png?v=1"
-         alt="Rabbit hole (X에서 보기)" />
-    <span class="badge">▶ Watch on X</span>
-  </a>
-
-  <div class="meta">
-    <h3 class="title">Rabbit hole 🐇</h3>
-    <p class="desc">아래로 내려갈수록, 비트코인은 더 밝게 빛났다.</p>
-    <div class="row">
-      <span class="tiny"><span class="dot"></span>2025-11-16</span>
-    </div>
-  </div>
-</article>
-
-       <!-- 카드 0: Pac-BTC (NEW) -->
-<article class="card">
-    <span class="badge-sold">SOLD OUT ⚡</span>
-  <a href="https://x.com/gxrxxxng/status/1989328925781287404?s=46"
-     target="_blank" rel="noopener"
-     aria-label="Egg bread — X에서 보기"
-     style="position:relative; display:block;">
-    <img class="thumb" src="assets/images/251114-bitcoin pacman.png?v=1"
-         alt="Pac-BTC (X에서 보기)" />
-    <span class="badge">▶ Watch on X</span>
-  </a>
-
-  <div class="meta">
-    <h3 class="title">Pac-BTC 👾</h3>
-    <p class="desc">화폐를 잡아먹으러 왔다.</p>
-    <div class="row">
-      <span class="tiny"><span class="dot"></span>2025-11-14</span>
-    </div>
-  </div>
-</article>
-
+      <!-- 나머지 카드들은 기존 그대로 붙여넣어도 됨:
+           data-status가 없으면 자동으로 available 처리됨 -->
+      
        <!-- 카드 0: MY tiny bitcoin shelf (NEW) -->
 <article class="card">
   <a href="https://x.com/gxrxxxng/status/1988932907881402691?s=46"
@@ -765,8 +754,6 @@
       </article>
 
       
-      -->
-
     </section>
 
     <!-- EXHIBITIONS -->
@@ -780,8 +767,6 @@
             <strong style="color:#fff">2025-11-30</strong> · Bitcoin Mini Conference Exhibition
             <span class="tiny" style="display:block">Pixel artworks displayed.</span>
           </li>
-          <!-- 필요하면 아래처럼 계속 추가 -->
-          <!-- <li><strong style="color:#fff">YYYY-MM-DD</strong> · Event Name</li> -->
         </ul>
       </div>
     </section>
@@ -806,7 +791,7 @@
         <p class="tiny" style="margin:0">
           X: <a class="inline" href="https://x.com/gxrxxxng?s=21" target="_blank" rel="noopener">@gxrxxxng</a>
           <br/>
-          Lightning: <span id="lnaddr" class="kbd">garyeong@walletofsatoshi.com</span>
+          Lightning: <span id="lnaddr" class="kbd">dalbit@oksu.su</span>
           <br/>
           Shop: <a class="inline" href="https://store.btcmap.kr/stores/rkfud/" target="_blank" rel="noopener">Satoshop</a>
         </p>
@@ -822,7 +807,7 @@
 
     // ⚡ Lightning 주소 복사
     (function () {
-      const LIGHTNING_ADDRESS = 'garyeong@walletofsatoshi.com';
+      const LIGHTNING_ADDRESS = 'dalbit@oksu.su';
       const btn = document.getElementById('tipCopyBtn');
 
       async function copy(text) {
@@ -863,14 +848,21 @@
       }
     })();
 
-    // ✅ 갤러리 필터 (data-status 기반)
+    // ✅ 갤러리 필터 (data-status 기반) - data-status 없으면 available로 처리
     (function(){
       const buttons = document.querySelectorAll('[data-filter]');
-      const cards = document.querySelectorAll('.card[data-status]');
+      const cards = document.querySelectorAll('.grid .card'); // 갤러리 카드만
+
+      // data-status 없으면 available로 자동 세팅
+      cards.forEach(card => {
+        if (!card.hasAttribute('data-status')) {
+          card.setAttribute('data-status', 'available');
+        }
+      });
 
       function applyFilter(filter){
         cards.forEach(card => {
-          const st = card.getAttribute('data-status');
+          const st = card.getAttribute('data-status'); // 이제 항상 있음
           const show = (filter === 'all') || (st === filter);
           card.style.display = show ? '' : 'none';
         });
