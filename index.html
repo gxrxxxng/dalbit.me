@@ -37,11 +37,40 @@
         linear-gradient(180deg, var(--bg-1), var(--bg-0));
     }
 
-    header{
-      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
-      background:linear-gradient(to bottom, rgba(15,12,26,.85), rgba(15,12,26,.35));
-      border-bottom:1px solid var(--ring);
-    }
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+
+  background: linear-gradient(
+    to bottom,
+    rgba(15,12,26,.78),
+    rgba(15,12,26,.28)
+  );
+
+  border-bottom: 1px solid var(--ring);
+  transition:
+    background .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+/* 스크롤 시 */
+header.is-scrolled{
+  background: linear-gradient(
+    to bottom,
+    rgba(15,12,26,.55),
+    rgba(15,12,26,.10)
+  );
+  border-bottom-color: rgba(255,255,255,.10);
+  box-shadow: 0 10px 24px rgba(0,0,0,.22);
+}
+
     .wrap{max-width:var(--max); margin:0 auto; padding:18px}
     .row{display:flex; align-items:center; justify-content:space-between; gap:14px}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
@@ -893,5 +922,19 @@
       applyFilter('all');
     })();
   </script>
+  <script>
+  (function(){
+    const header = document.querySelector('header');
+    if(!header) return;
+
+    function onScroll(){
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive:true });
+    onScroll();
+  })();
+</script>
+
 </body>
 </html>
