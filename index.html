@@ -20,11 +20,19 @@
     }
 
     :root{
-      --bg-0:#0f0c1a; --bg-1:#1a1530; --text:#e9e6ff; --muted:#bfb9e6;
-      --accent:#ffcc57; --card:#17132a; --ring:rgba(255,255,255,.12);
-      --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --grid-gap:16px; --max:1100px;
-      --danger:#ff6b6b;
-    }
+  --bg-0:#0f0c1a; --bg-1:#1a1530; --text:#e9e6ff; --muted:#bfb9e6;
+  --accent:#ffcc57; --card:#17132a; --ring:rgba(255,255,255,.12);
+  --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --grid-gap:16px; --max:1100px;
+  --danger:#ff6b6b;
+
+  --moon-yellow:#f2e9b8; /* 🌙 달빛 링크 색 */
+}
+a.inline { color: var(--moon-yellow); }
+a.inline:hover {
+  color: #fff2c2;
+  text-decoration: underline;
+}
+
     *{box-sizing:border-box}
     html,body{height:100%}
     html { font-size:16px; line-height:1.6; scroll-behavior:smooth; }
@@ -293,9 +301,9 @@
       <h2>About</h2>
       <div class="panel">
         <p style="margin:0; color:var(--muted)">
-          이곳은 X에 올린 픽셀아트들을 한데 모아둔 작은 갤러리입니다.<br/>
-          각 장면의 기록과 이야기는 ‘Watch on X’를 통해 확인해 주세요.<br/><br/>
-          전시와 경매, 온라인 샵을 통해 작품의 기록이 이어지고 있습니다.<br/>
+          이곳은 X에 공개된 픽셀아트들을 모아 소개하는 작은 갤러리입니다.<br/>
+          각 장면의 기록과 이야기는 ‘Watch on X’를 통해 확인하실 수 있습니다.<br/><br/>
+          작품의 기록은 전시와 경매, 온라인 샵을 통해 이어집니다.<br/>
           방문해 주셔서 감사합니다.
         </p>
       </div>
@@ -304,7 +312,7 @@
     <!-- ✅ GALLERY -->
     <section class="section" style="padding-top:6px">
       <h2 id="gallery">Gallery</h2>
-      <p>카드를 클릭하면 X에서 기록을 볼 수 있어요.</p>
+      <p>각 장면을 클릭하면 X에서 기록을 확인하실 수 있습니다.</p>
 
       <div class="toolbar" role="group" aria-label="Gallery filters">
         <button class="btn btn-on" data-filter="all">All</button>
@@ -748,25 +756,35 @@
       </article>
     </section>
 
-    <!-- ✅ EXHIBITIONS -->
-    <section id="exhibitions" class="section">
-      <h2>Exhibitions</h2>
-      <p>작은 기록들이 모여, 다음 작업의 지도가 됩니다.</p>
+<!-- ✅ EXHIBITIONS -->
+<section id="exhibitions" class="section">
+  <h2>Exhibitions</h2>
+  <p>작은 기록들이 모여, 다음 작업의 지도가 됩니다.</p>
 
-      <div class="panel">
-        <ul class="list">
-          <li>
-            <strong style="color:#fff">2025-11-30</strong> · Bitcoin Mini Conference Exhibition
-            <span class="tiny" style="display:block">Pixel artworks displayed.</span>
-          </li>
-        </ul>
-      </div>
-    </section>
+  <div class="panel">
+    <ul class="list">
+      <li>
+        <strong style="color:#fff">2025-11-29~30</strong> · Bitcoin Mini Conference Exhibition
+        <span class="tiny" style="display:block">Pixel artworks on display.</span>
+
+        <div class="tiny" style="margin-top:8px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="https://x.com/gxrxxxng/status/1994633142674886870?s=46" target="_blank" rel="noopener noreferrer">
+            Day 1 · Watch on X
+          </a>
+          <a href="https://x.com/gxrxxxng/status/1995020996118810765?s=46" target="_blank" rel="noopener noreferrer">
+            Day 2 · Watch on X
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
 
     <!-- ✅ SHOP (아래로 내림) -->
     <section id="shop" class="section">
       <h2>Shop</h2>
-      <p>선별된 작품은 사토샵에서 구매할 수 있어요.</p>
+      <p>선별된 작품은 사토샵에서 구매하실 수 있습니다.</p>
 
       <div class="panel">
         <p style="margin:0; color:var(--muted)">
